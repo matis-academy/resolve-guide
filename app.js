@@ -8,7 +8,7 @@ const PAGES = [
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const cache = {};
-const load = async (name) => (cache[name] ??= fetch(`data/${name}.json?v=1`).then((r) => r.json()));
+const load = async (name) => (cache[name] ??= fetch(`data/${name}.json?v=2`).then((r) => r.json()));
 
 let common = null, page = null, view = null, pinned = null, hovered = null;
 const zoneEl = new Map();             // id → элемент зоны на текущем виде
