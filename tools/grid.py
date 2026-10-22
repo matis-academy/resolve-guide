@@ -1,10 +1,13 @@
 # Увеличенный фрагмент скриншота с сеткой координат — чтобы точно снимать рамки элементов.
 # python3 -I tools/grid.py img/edit.webp X0 Y0 X1 Y1 out.png [масштаб=3]
+# Координаты — в системе разметки 2000×806 (как в data/*.json), даже если картинка крупнее.
 import sys
 from PIL import Image, ImageDraw
 src, x0, y0, x1, y1, out = sys.argv[1], *map(int, sys.argv[2:6]), sys.argv[6]
 k = int(sys.argv[7]) if len(sys.argv) > 7 else 3
-im = Image.open(src).convert('RGB').crop((x0, y0, x1, y1)).resize(((x1 - x0) * k, (y1 - y0) * k), Image.NEAREST)
+src_im = Image.open(src).convert('RGB')
+s_ = src_im.width / 2000
+im = src_im.crop(tuple(round(v * s_) for v in (x0, y0, x1, y1))).resize(((x1 - x0) * k, (y1 - y0) * k), Image.LANCZOS)
 d = ImageDraw.Draw(im)
 for x in range((x0 // 10 + 1) * 10, x1, 10):
     big = x % 50 == 0

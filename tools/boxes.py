@@ -6,7 +6,7 @@ data = json.load(open(sys.argv[1]))
 view = sys.argv[3] if len(sys.argv) > 3 else data['views'][0]['id']
 v = next(x for x in data['views'] if x['id'] == view)
 im = Image.open(v['image']).convert('RGB')
-im = im.resize((im.width * 2, im.height * 2), Image.LANCZOS)
+im = im.resize((v['w'] * 2, v['h'] * 2), Image.LANCZOS)   # разметка в системе w×h из data
 d = ImageDraw.Draw(im)
 for a in data['areas']:
     if a.get('view', data['views'][0]['id']) != view: continue
