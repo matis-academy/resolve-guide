@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DaVinci Resolve 21 — интерактивный справочник</title>
+  <meta name="description" content="Наведите мышь на любую кнопку интерфейса DaVinci Resolve 21 — подсветится элемент и появится объяснение, что это и для чего.">
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <b>DaVinci Resolve 21</b>
+      <span>интерактивный справочник</span>
+    </div>
+    <nav class="pages" id="pages" aria-label="Страницы Resolve"></nav>
+    <div class="tools">
+      <div class="views" id="views" hidden></div>
+      <label class="search"><input id="q" type="search" placeholder="Найти кнопку: blade, кодек, колёса…" autocomplete="off"><span id="qCount"></span></label>
+      <label class="sw" title="Обвести все элементы, у которых есть описание"><input type="checkbox" id="showAll"> <span>Все зоны</span></label>
+    </div>
+  </header>
+
+  <main>
+    <p class="hint" id="hint">Наведите мышь на любую кнопку или панель — она подсветится, а рядом появится описание. Щелчок закрепляет карточку, Esc — снимает.</p>
+    <div class="stage-scroll" id="stageScroll">
+      <div class="stage" id="stage">
+        <img id="shot" alt="" draggable="false">
+        <div class="zones" id="zones"></div>
+        <div class="hl" id="hl" hidden></div>
+      </div>
+    </div>
+    <article class="card" id="card" hidden role="dialog" aria-live="polite"></article>
+
+    <section class="about">
+      <h2 id="pageTitle"></h2>
+      <p id="pageAbout"></p>
+      <div class="list" id="list"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    Учебный справочник. Скриншоты интерфейса DaVinci Resolve Studio 21; DaVinci Resolve — продукт Blackmagic Design.
+    Описания — пересказ для учеников по официальному руководству DaVinci Resolve Reference Manual.
+  </footer>
+  <script type="module" src="app.js?v=1"></script>
+</body>
+</html>
