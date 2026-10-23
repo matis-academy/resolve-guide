@@ -22,7 +22,7 @@ async function openPage(id, viewId, areaId) {
   $('pages').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.page === id)));
   $('views').hidden = page.views.length < 2;
   $('views').innerHTML = page.views.map((v, i) => `<button data-view="${v.id}" aria-pressed="${v.id === view.id}">${esc(v.ru || `Вид ${i + 1}`)}</button>`).join('');
-  $('shot').src = view.image;
+  $('shot').src = `${view.image}?v=2`;
   $('shot').alt = `Страница ${page.en} в DaVinci Resolve`;
   $('stage').style.aspectRatio = `${view.w} / ${view.h}`;
   $('pageTitle').textContent = `Страница ${page.en} — ${page.ru}`;
